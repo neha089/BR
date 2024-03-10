@@ -6,16 +6,16 @@ import jakarta.persistence.*;
 @Table(name="bus")
 public class Bus {
     @Id
-    @Column(name = "B_id")
+    @Column(name = "b_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int b_id;
-    @Column(name = "Name", nullable = false, length = 50)
+    private int B_id;
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
-    @Column(name = "Type", nullable = false, length = 50)
+    @Column(name = "type", nullable = false, length = 50)
     private String type;
 
-    public Bus(int b_id, String name, String type, int capacity) {
-        this.b_id = b_id;
+    public Bus(int B_id, String name, String type, int capacity) {
+        this.B_id = B_id;
         this.name = name;
         this.type = type;
         this.capacity = capacity;
@@ -31,7 +31,7 @@ public class Bus {
     }
 
     public int getB_id() {
-        return b_id;
+        return B_id;
     }
 
     public String getName() {
@@ -42,8 +42,8 @@ public class Bus {
         return capacity;
     }
 
-    public void setB_id(int b_id) {
-        this.b_id = b_id;
+    public void setB_id(int B_id) {
+        this.B_id = B_id;
     }
 
     public void setName(String name) {
@@ -65,7 +65,7 @@ public class Bus {
     @Override
     public String toString() {
         return "Bus{" +
-                "b_id=" + b_id +
+                "B_id=" + B_id +
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", capacity=" + capacity +

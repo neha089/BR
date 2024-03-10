@@ -8,27 +8,27 @@ import java.util.Date;
 @Table(name="ticket")
 public class Ticket {
     @Id
-    @Column(name="T_id")
+    @Column(name="t_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int t_id;
+    private int T_id;
     @ManyToOne
-    @JoinColumn(name="P_id")
+    @JoinColumn(name="p_id")
     private Passanger passanger;
     @ManyToOne
-    @JoinColumn(name="BT_id")
+    @JoinColumn(name="bt_id")
     private Bus_track busTrack;
-    @Column(name="Booking_Date" , nullable=false)
-    private Date booking_date;
+    @Column(name="booking_date" , nullable=false)
+    private Date Booking_date;
 
-    @Column(name="Seat_No" ,nullable = false)
-    private int seat_no;
+    @Column(name="seat_no" ,nullable = false)
+    private int Seat_no;
 
-    public Ticket(int t_id, Passanger p_id, Bus_track bt_id, Date booking_date, int seat_no) {
-        this.t_id = t_id;
+    public Ticket(int T_id, Passanger p_id, Bus_track bT_id, Date Booking_date, int Seat_no) {
+        this.T_id = T_id;
         passanger = p_id;
-        busTrack = bt_id;
-        this.booking_date = booking_date;
-        this.seat_no = seat_no;
+        busTrack = bT_id;
+        this.Booking_date = Booking_date;
+        this.Seat_no = Seat_no;
     }
 
     public Ticket() {
@@ -36,11 +36,11 @@ public class Ticket {
     }
 
     public int getT_id() {
-        return t_id;
+        return T_id;
     }
 
-    public void setT_id(int t_id) {
-        this.t_id = t_id;
+    public void setT_id(int T_id) {
+        this.T_id = T_id;
     }
 
     public Passanger getP_id() {
@@ -51,38 +51,38 @@ public class Ticket {
         passanger = p_id;
     }
 
-    public Bus_track getBt_id() {
+    public Bus_track getBT_id() {
         return busTrack;
     }
 
-    public void setBt_id(Bus_track bt_id) {
-        this.busTrack = bt_id;
+    public void setBT_id(Bus_track bT_id) {
+        this.busTrack = bT_id;
     }
 
     public Date getBooking_date() {
-        return booking_date;
+        return Booking_date;
     }
 
-    public void setBooking_date(Date booking_date) {
-        this.booking_date = booking_date;
+    public void setBooking_date(Date Booking_date) {
+        this.Booking_date = Booking_date;
     }
 
     public int getSeat_no() {
-        return seat_no;
+        return Seat_no;
     }
 
-    public void setSeat_no(int seat_no) {
-        this.seat_no = seat_no;
+    public void setSeat_no(int Seat_no) {
+        this.Seat_no = Seat_no;
     }
 
     @Override
     public String toString() {
         return "Ticket{" +
-                "t_id=" + t_id +
+                "T_id=" + T_id +
                 ", P_id=" + passanger +
-                ", bt_id=" + busTrack +
-                ", booking_date=" + booking_date +
-                ", seat_no=" + seat_no +
+                ", bT_id=" + busTrack +
+                ", Booking_date=" + Booking_date +
+                ", Seat_no=" + Seat_no +
                 '}';
     }
 }

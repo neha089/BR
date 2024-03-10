@@ -10,47 +10,51 @@ import java.util.Date;
 public class Bus_track {
 
     @Id
-    @Column(name="BT_id")
+    @Column(name="bT_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int bt_id;
+    private int Bt_id;
     @ManyToOne
-    @JoinColumn(name="B_id")
+    @JoinColumn(name="b_id")
     private Bus bus;
 
-    @Column(name="Service_Date" , nullable=false)
-    private Date service_date;
-    @Column(name="Dept_time" , nullable=false)
-    private Time dept_time;
-    @Column(name="Arr_time" , nullable=false)
-    private Time arr_time;
-    @Column(name="Source" , nullable=false,length = 30)
-    private String source;
-    @Column(name="Destiny" , nullable=false,length = 30)
-    private String destiny;
+    @Column(name="service_Date" , nullable=false)
+    private Date Service_date;
+    @Column(name="dept_time" , nullable=false)
+    private Time Dept_time;
+    @Column(name="arr_time" , nullable=false)
+    private Time Arr_time;
+    @Column(name="source" , nullable=false,length = 30)
+    private String Source;
+    @Column(name="destiny" , nullable=false,length = 30)
+    private String Destiny;
 
-    @Column(name="Price" ,nullable = false)
-    private int seat_no;
+    @Column(name="price" ,nullable = false)
+    private int Price;
+
+    public Bus_track() {
+
+    }
 
     public int getBt_id() {
-        return bt_id;
+        return Bt_id;
     }
 
     @Override
     public String toString() {
         return "Bus_track{" +
-                "bt_id=" + bt_id +
+                "bt_id=" + Bt_id +
                 ", bus=" + bus +
-                ", service_date=" + service_date +
-                ", dept_time=" + dept_time +
-                ", arr_time=" + arr_time +
-                ", source='" + source + '\'' +
-                ", destiny='" + destiny + '\'' +
-                ", seat_no=" + seat_no +
+                ", service_date=" + Service_date +
+                ", dept_time=" + Dept_time +
+                ", arr_time=" + Arr_time +
+                ", source='" + Source + '\'' +
+                ", destiny='" + Destiny + '\'' +
+                ", seat_no=" + Price +
                 '}';
     }
 
     public void setBt_id(int bt_id) {
-        this.bt_id = bt_id;
+        this.Bt_id = bt_id;
     }
 
     public Bus getBus() {
@@ -62,62 +66,62 @@ public class Bus_track {
     }
 
     public Date getService_date() {
-        return service_date;
+        return Service_date;
     }
 
     public void setService_date(Date service_date) {
-        this.service_date = service_date;
+        this.Service_date = service_date;
     }
 
     public Time getDept_time() {
-        return dept_time;
+        return Dept_time;
     }
 
     public void setDept_time(Time dept_time) {
-        this.dept_time = dept_time;
+        this.Dept_time = dept_time;
     }
 
     public Time getArr_time() {
-        return arr_time;
+        return Arr_time;
     }
 
     public void setArr_time(Time arr_time) {
-        this.arr_time = arr_time;
+        this.Arr_time = arr_time;
     }
 
     public String getSource() {
-        return source;
+        return Source;
     }
 
     public void setSource(String source) {
-        this.source = source;
+        this.Source = source;
     }
 
     public String getDestiny() {
-        return destiny;
+        return Destiny;
     }
 
     public void setDestiny(String destiny) {
-        this.destiny = destiny;
+        this.Destiny = destiny;
     }
 
     public int getSeat_no() {
-        return seat_no;
+        return Price;
     }
 
     public void setSeat_no(int seat_no) {
-        this.seat_no = seat_no;
+        this.Price = seat_no;
     }
 
     public Bus_track(int bt_id, Bus bus, Date service_date, Time dept_time, Time arr_time, String source, String destiny, int seat_no) {
-        this.bt_id = bt_id;
+        this.Bt_id = bt_id;
         this.bus = bus;
-        this.service_date = service_date;
-        this.dept_time = dept_time;
-        this.arr_time = arr_time;
-        this.source = source;
-        this.destiny = destiny;
-        this.seat_no = seat_no;
+        this.Service_date = service_date;
+        this.Dept_time = dept_time;
+        this.Arr_time = arr_time;
+        this.Source = source;
+        this.Destiny = destiny;
+        this.Price = seat_no;
     }
 
 

@@ -9,20 +9,21 @@ import java.util.List;
 public class Passanger {
 
         @Id
-        @Column(name="P_id")
+        @Column(name="p_id")
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int p_id;
-    @Column(name="Name" , nullable=false,length = 50)
-    private String name;
+        private int P_id;
+    @Column(name="name" , nullable=false,length = 50)
+    private String Name;
     @OneToMany
-    @JoinColumn(name="U_id")
+    @JoinColumn(name="u_id")
     private List<User> user;
 
+
     public Passanger(int p_id, String name, List<User> user, int age) {
-        this.p_id = p_id;
-        this.name = name;
+        this.P_id = p_id;
+        this.Name = name;
         this.user = user;
-        Age = age;
+        age = age;
     }
 
     public List<User> getUser() {
@@ -33,16 +34,16 @@ public class Passanger {
         this.user = user;
     }
 
-    public int getAge() {
-        return Age;
+    public int getage() {
+        return age;
     }
 
-    public void setAge(int age) {
-        Age = age;
+    public void setage(int age) {
+        age = age;
     }
 
-    @Column(name="Age" ,nullable = false)
-    private int Age;
+    @Column(name="age" ,nullable = false)
+    private int age;
 
     public Passanger() {
 
@@ -50,29 +51,29 @@ public class Passanger {
 
 
     public int getP_id() {
-        return p_id;
+        return P_id;
     }
 
     @Override
     public String toString() {
         return "Passanger{" +
-                "p_id=" + p_id +
-                ", name='" + name + '\'' +
+                "P_id=" + P_id +
+                ", Name='" + Name + '\'' +
                 ", user=" + user +
-                ", Age=" + Age +
+                ", age=" + age +
                 '}';
     }
 
-    public void setP_id(int p_id) {
-        this.p_id = p_id;
+    public void setP_id(int P_id) {
+        this.P_id = P_id;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
 
