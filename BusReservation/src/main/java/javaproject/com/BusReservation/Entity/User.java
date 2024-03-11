@@ -1,4 +1,4 @@
-package Entity;
+package javaproject.com.BusReservation.Entity;
 
 import jakarta.persistence.*;
 

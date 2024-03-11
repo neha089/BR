@@ -1,6 +1,6 @@
-package RestController;
-import Entity.Passanger;
-import Service.PassangerService;
+package javaproject.com.BusReservation.RestController;
+import javaproject.com.BusReservation.Entity.Passanger;
+import javaproject.com.BusReservation.Service.PassangerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Repository
-@RequestMapping("/Api")
+@RequestMapping("/api")
 
 public class PassangerRestController {
     private PassangerService pservice;

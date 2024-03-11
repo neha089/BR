@@ -1,6 +1,6 @@
-package DAO;
+package javaproject.com.BusReservation.DAO;
 
-import Entity.Bus_track;
+import javaproject.com.BusReservation.Entity.Bus_track;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;

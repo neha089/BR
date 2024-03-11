@@ -1,13 +1,13 @@
-package RestController;
-import Service.Bus_trackService;
-import Entity.Bus_track;
+package javaproject.com.BusReservation.RestController;
+import javaproject.com.BusReservation.Service.Bus_trackService;
+import javaproject.com.BusReservation.Entity.Bus_track;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/Api")
+@RequestMapping("/api")
 public class Bus_trackController {
     private Bus_trackService btservice;
     @Autowired
@@ -15,11 +15,11 @@ public class Bus_trackController {
         btservice=buss;
     }
 
-    @GetMapping("/buses")
+    @GetMapping("/buses_track")
     public List<Bus_track> findAll(){
         return btservice.findAll();
     }
-    @GetMapping("/buses/{id}")
+    @GetMapping("/buses_track/{id}")
     public Bus_track findById (@PathVariable int id){
         Bus_track buses=btservice.findById(id);
         if(buses==null){
@@ -28,19 +28,19 @@ public class Bus_trackController {
         return buses;
     }
 
-    @PostMapping("/bus")
+    @PostMapping("/bus_track")
     public Bus_track updateBustrack(@RequestBody Bus_track bus){
         btservice.save(bus);
         return bus;
 
     }
-    @PutMapping("/Passanger")
+    @PutMapping("/bus_track")
     public Bus_track updatePassangers(@RequestBody Bus_track Passanger){
         btservice.save(Passanger);
         return Passanger;
     }
 
-    @DeleteMapping("/bus/{id}")
+    @DeleteMapping("/bus_track/{id}")
     public String deleteBus_track(@PathVariable int id){
         Bus_track bus=btservice.findById(id);
         if(bus==null){

@@ -1,7 +1,7 @@
-package Service;
+package javaproject.com.BusReservation.Service;
 
-import DAO.PassangerDao;
-import Entity.Passanger;
+import javaproject.com.BusReservation.DAO.PassangerDao;
+import javaproject.com.BusReservation.Entity.Passanger;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class PassangerService {
-    private DAO.PassangerDao PassangerDao;
+    private javaproject.com.BusReservation.DAO.PassangerDao PassangerDao;
     @Autowired
     public PassangerService(PassangerDao thePassanger){
         PassangerDao=thePassanger;

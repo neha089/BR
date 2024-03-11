@@ -1,13 +1,13 @@
-package RestController;
-import Entity.Bus;
-import Service.BusService;
+package javaproject.com.BusReservation.RestController;
+import javaproject.com.BusReservation.Entity.Bus;
+import javaproject.com.BusReservation.Service.BusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/Api")
+@RequestMapping("/api")
 public class BusRestController {
 
     private BusService busService;

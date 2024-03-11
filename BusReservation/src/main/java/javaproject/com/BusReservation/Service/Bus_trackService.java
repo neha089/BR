@@ -1,7 +1,7 @@
-package Service;
+package javaproject.com.BusReservation.Service;
 
-import DAO.Bus_trackDao;
-import Entity.Bus_track;
+import javaproject.com.BusReservation.DAO.Bus_trackDao;
+import javaproject.com.BusReservation.Entity.Bus_track;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

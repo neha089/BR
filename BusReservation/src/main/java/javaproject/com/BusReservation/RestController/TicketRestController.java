@@ -1,7 +1,7 @@
-package RestController;
+package javaproject.com.BusReservation.RestController;
 
-import Entity.Ticket;
-import Service.TicketService;
+import javaproject.com.BusReservation.Entity.Ticket;
+import javaproject.com.BusReservation.Service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Repository
-@RequestMapping("/Api")
+@RequestMapping("/api")
 public class TicketRestController {
 
     private TicketService tservice;

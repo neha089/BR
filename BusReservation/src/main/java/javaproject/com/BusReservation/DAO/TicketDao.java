@@ -1,6 +1,6 @@
-package DAO;
+package javaproject.com.BusReservation.DAO;
 
-import Entity.Passanger;
+import javaproject.com.BusReservation.Entity.Ticket;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
@@ -10,30 +10,30 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class PassangerDao {
+public class TicketDao {
 
 
         private EntityManager entityManager;
         @Autowired
-        public PassangerDao(EntityManager newentitymanager){
+        public TicketDao(EntityManager newentitymanager){
             entityManager=newentitymanager;
         }
 
-        public List<Passanger> findAll(){
+        public List<Ticket> findAll(){
 
-            TypedQuery<Passanger> query=entityManager.createQuery("from Passanger",Passanger.class);
-            List<Passanger> buses=query.getResultList();
+            TypedQuery<Ticket> query=entityManager.createQuery("from Ticket",Ticket.class);
+            List<Ticket> buses=query.getResultList();
             return buses;
         }
-        public Passanger findById(int Id){
-            Passanger buses=entityManager.find(Passanger.class,Id);
+        public Ticket findById(int Id){
+            Ticket buses=entityManager.find(Ticket.class,Id);
             return buses;
         }
-        public void save (Passanger buses){
+        public void save (Ticket buses){
             Object savebus=entityManager.merge(buses);
         }
         public void deleteById(int Id){
-            Query query=entityManager.createQuery("delete from Passanger where id=: busid");
+            Query query=entityManager.createQuery("delete from Ticket where id=: busid");
 
             query.setParameter("busid",Id);
             query.executeUpdate();
