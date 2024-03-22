@@ -8,31 +8,26 @@ import java.util.List;
 @Table(name="passanger")
 public class Passanger {
 
-        @Id
-        @Column(name="p_id")
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int P_id;
-    @Column(name="name" , nullable=false,length = 50)
+    @Id
+    @Column(name = "p_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int P_id;
+    @Column(name = "name", nullable = false, length = 50)
     private String Name;
-    @OneToMany
-    @JoinColumn(name="u_id")
-    private List<User> user;
+    @ManyToOne
+    @JoinColumn(name = "u_id")
+    private User user;
+    @Column(name = "age", nullable = false)
+    private int age;
 
 
-    public Passanger(int p_id, String name, List<User> user, int age) {
+    public Passanger(int p_id, String name, User user, int age) {
         this.P_id = p_id;
         this.Name = name;
         this.user = user;
         age = age;
     }
 
-    public List<User> getUser() {
-        return user;
-    }
-
-    public void setUser(List<User> user) {
-        this.user = user;
-    }
 
     public int getage() {
         return age;
@@ -42,8 +37,6 @@ public class Passanger {
         age = age;
     }
 
-    @Column(name="age" ,nullable = false)
-    private int age;
 
     public Passanger() {
 
@@ -52,6 +45,14 @@ public class Passanger {
 
     public int getP_id() {
         return P_id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -76,5 +77,5 @@ public class Passanger {
         this.Name = Name;
     }
 
-
 }
+

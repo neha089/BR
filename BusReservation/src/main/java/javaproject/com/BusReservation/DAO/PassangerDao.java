@@ -22,15 +22,15 @@ public class PassangerDao {
         public List<Passanger> findAll(){
 
             TypedQuery<Passanger> query=entityManager.createQuery("from Passanger",Passanger.class);
-            List<Passanger> buses=query.getResultList();
-            return buses;
+            List<Passanger> passangers=query.getResultList();
+            return passangers;
         }
         public Passanger findById(int Id){
-            Passanger buses=entityManager.find(Passanger.class,Id);
-            return buses;
+            Passanger passangers=entityManager.find(Passanger.class,Id);
+            return passangers;
         }
-        public void save (Passanger buses){
-            Object savebus=entityManager.merge(buses);
+        public void save (Passanger passangers){
+            Object savebus=entityManager.merge(passangers);
         }
         public void deleteById(int Id){
             Query query=entityManager.createQuery("delete from Passanger where id=: busid");

@@ -10,29 +10,29 @@ import java.util.List;
 
 @Service
 public class PassangerService {
-    private javaproject.com.BusReservation.DAO.PassangerDao PassangerDao;
+    private PassangerDao passangerDao;
     @Autowired
     public PassangerService(PassangerDao thePassanger){
-        PassangerDao=thePassanger;
+        passangerDao=thePassanger;
 
     }
     @Transactional
     public List<Passanger> findAll(){
-        return PassangerDao.findAll();
+        return passangerDao.findAll();
     }
 
     @Transactional
     public Passanger findById(int id){
-        return PassangerDao.findById(id);
+        return passangerDao.findById(id);
     }
     @Transactional
     public void save(Passanger Passanger){
-        PassangerDao.save(Passanger);
+        passangerDao.save(Passanger);
     }
 
     @Transactional
     public void deleteById(int id){
-        PassangerDao.deleteById(id);
+        passangerDao.deleteById(id);
     }
 
 }

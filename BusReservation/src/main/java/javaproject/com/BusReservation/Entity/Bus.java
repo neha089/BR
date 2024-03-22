@@ -2,6 +2,8 @@ package javaproject.com.BusReservation.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="bus")
 public class Bus {
@@ -15,7 +17,12 @@ public class Bus {
     private String type;
     @Column(name = "capacity", nullable = false)
     private int capacity;
+    @OneToMany(mappedBy = "bus")
+    private List<Trip> t;
 
+@ManyToOne(fetch=FetchType.LAZY)
+@JoinColumn(name="agency_id")
+private Agency agency;
 
     public Bus(int B_id, String name, String type, int capacity) {
         this.b_id = B_id;
