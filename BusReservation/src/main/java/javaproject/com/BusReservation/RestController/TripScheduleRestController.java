@@ -1,5 +1,8 @@
 package javaproject.com.BusReservation.RestController;
 import javaproject.com.BusReservation.Entity.Bus;
+import javaproject.com.BusReservation.Entity.TripSchedule;
+import javaproject.com.BusReservation.Service.BusService;
+import javaproject.com.BusReservation.Service.TripScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,40 +12,39 @@ import java.util.List;
 @RequestMapping("/api")
 public class TripScheduleRestController {
 
-    private BusService busService;
+    private TripScheduleService tripslService;
     @Autowired
-    public TripScheduleRestController(BusService buss){
-        busService=buss;
+    public TripScheduleRestController(TripScheduleService tripsches){
+        tripslService=tripsches;
     }
-
-    @GetMapping("/buses")
-    public List<Bus> findAll(){
-        return busService.findAll();
+    @GetMapping("/tripsch")
+    public List<TripSchedule> findAll(){
+        return tripslService.findAll();
     }
-    @GetMapping("/buses/{id}")
-    public Bus findById (@PathVariable int id){
-        Bus buses=busService.findById(id);
-        if(buses==null){
+    @GetMapping("/tripsch/{id}")
+    public TripSchedule findById (@PathVariable int id){
+        TripSchedule tripsch=tripslService.findById(id);
+        if(tripsch==null){
             throw  new RuntimeException("Bus not Found with id " + id);
         }
-        return buses;
+        return tripsch;
     }
 
-    @PostMapping("/bus")
-    public Bus updateBus(@RequestBody Bus bus){
-        busService.save(bus);
-        return bus;
+    @PostMapping("/tripsl")
+    public TripSchedule updateBus(@RequestBody TripSchedule tripsl){
+        tripslService.save(tripsl);
+        return tripsl;
 
     }
 
 
-    @DeleteMapping("/bus/{id}")
+    @DeleteMapping("/tripsl/{id}")
     public String deleteBus(@PathVariable int id){
-        Bus bus=busService.findById(id);
-        if(bus==null){
+        TripSchedule tripsl=tripslService.findById(id);
+        if(tripsl==null){
             throw new RuntimeException("Bus not Found with id : " +id);
         }
-        busService.deleteById(id);
+        tripslService.deleteById(id);
         return "Delete Bus  with id" + id;
     }
 }

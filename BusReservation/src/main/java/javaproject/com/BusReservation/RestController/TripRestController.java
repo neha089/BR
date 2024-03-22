@@ -16,35 +16,35 @@ public class TripRestController {
         tpservice=buss;
     }
 
-    @GetMapping("/buses_track")
+    @GetMapping("/trips_track")
     public List<Trip> findAll(){
         return tpservice.findAll();
     }
-    @GetMapping("/buses_track/{id}")
+    @GetMapping("/trips_track/{id}")
     public Trip findById (@PathVariable int id){
-        Trip buses=tpservice.findById(id);
-        if(buses==null){
+        Trip trips=tpservice.findById(id);
+        if(trips==null){
             throw  new RuntimeException("Tripnot Found with id " + id);
         }
-        return buses;
+        return trips;
     }
 
-    @PostMapping("/bus_track")
-    public Trip updateBustrack(@RequestBody Trip bus){
-        tpservice.save(bus);
-        return bus;
+    @PostMapping("/trip_track")
+    public Trip updateBustrack(@RequestBody Trip trip){
+        tpservice.save(trip);
+        return trip;
 
     }
-    @PutMapping("/bus_track")
+    @PutMapping("/trip_track")
     public Trip updatePassangers(@RequestBody Trip Passanger){
         tpservice.save(Passanger);
         return Passanger;
     }
 
-    @DeleteMapping("/bus_track/{id}")
+    @DeleteMapping("/trip_track/{id}")
     public String deleteTrip(@PathVariable int id){
-        Trip bus=tpservice.findById(id);
-        if(bus==null){
+        Trip trip=tpservice.findById(id);
+        if(trip==null){
             throw new RuntimeException("Trip not Found with id : " +id);
         }
         tpservice.deleteById(id);

@@ -14,8 +14,8 @@ public class PassangerRestController {
     private PassangerService pservice;
 
     @Autowired
-    public PassangerRestController(PassangerService buss) {
-        pservice = buss;
+    public PassangerRestController(PassangerService p) {
+        pservice = p;
     }
 
     @GetMapping("/Passangeres")
