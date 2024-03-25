@@ -1,9 +1,6 @@
 package javaproject.com.BusReservation.Entity;
 import jakarta.persistence.*;
 
-import java.sql.Time;
-import java.util.Date;
-
 @Entity
 @Table(name="trip")
 public class Trip {
@@ -11,19 +8,16 @@ public class Trip {
     @Id
     @Column(name="bt_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Bt_id;
+    private int bt_id;
     private int fare;
-    @ManyToOne
-    @JoinColumn(name="b_id")
-    private Bus bus;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "source_stop_id")
-    private Stop sourceStop;
+    @JoinColumn(name = "des_stop")
+    private DesStop desStop;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "dest_stop_id")
-    private Stop destStop;
+    @JoinColumn(name = "sou_stop")
+    private SouStop souStop;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "agency_id")
@@ -40,15 +34,7 @@ public class Trip {
     public Trip() {
 
     }
-    public Trip(int bt_id, int fare, Bus bus, Stop sourceStop, Stop destStop, Agency agency, int price) {
-        Bt_id = bt_id;
-        this.fare = fare;
-        this.bus = bus;
-        this.sourceStop = sourceStop;
-        this.destStop = destStop;
-        this.agency = agency;
-        Price = price;
-    }
+
 
     public int getFare() {
         return fare;
@@ -59,37 +45,13 @@ public class Trip {
     }
 
     public int getBt_id() {
-        return Bt_id;
+        return bt_id;
     }
 
 
 
     public void setBt_id(int bt_id) {
-        this.Bt_id = bt_id;
-    }
-
-    public Bus getBus() {
-        return bus;
-    }
-
-    public void setBus(Bus bus) {
-        this.bus = bus;
-    }
-
-    public Stop getSourceStop() {
-        return sourceStop;
-    }
-
-    public void setSourceStop(Stop sourceStop) {
-        this.sourceStop = sourceStop;
-    }
-
-    public Stop getDestStop() {
-        return destStop;
-    }
-
-    public void setDestStop(Stop destStop) {
-        this.destStop = destStop;
+        this.bt_id = bt_id;
     }
 
     public Agency getAgency() {
@@ -108,19 +70,48 @@ public class Trip {
         this.Price = seat_no;
     }
 
+    public Trip(int bt_id, int fare, Bus bus, DesStop desStop, SouStop souStop, Agency agency, int price) {
+        this.bt_id = bt_id;
+        this.fare = fare;
+        this.desStop = desStop;
+        this.souStop = souStop;
+        this.agency = agency;
+        Price = price;
+    }
+
+    public DesStop getDesStop() {
+        return desStop;
+    }
+
+    public void setDesStop(DesStop desStop) {
+        this.desStop = desStop;
+    }
+
+    public SouStop getSouStop() {
+        return souStop;
+    }
+
+    public void setSouStop(SouStop souStop) {
+        this.souStop = souStop;
+    }
+
     @Override
     public String toString() {
         return "Trip{" +
-                "Bt_id=" + Bt_id +
+                "bt_id=" + bt_id +
                 ", fare=" + fare +
-                ", bus=" + bus +
-                ", sourceStop=" + sourceStop +
-                ", destStop=" + destStop +
+                ", desStop=" + desStop +
+                ", souStop=" + souStop +
                 ", agency=" + agency +
                 ", Price=" + Price +
                 '}';
     }
 
+    public int getPrice() {
+        return Price;
+    }
 
-
+    public void setPrice(int price) {
+        Price = price;
+    }
 }

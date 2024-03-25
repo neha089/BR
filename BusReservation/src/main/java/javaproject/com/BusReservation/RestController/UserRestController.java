@@ -1,55 +1,52 @@
 package javaproject.com.BusReservation.RestController;
-
 import javaproject.com.BusReservation.Entity.User;
 import javaproject.com.BusReservation.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Repository
+@RestController
 @RequestMapping("/api")
 public class UserRestController {
 
-    private UserService btservice;
+    private UserService userService;
     @Autowired
     public UserRestController(UserService buss){
-        btservice=buss;
+        userService=buss;
     }
 
-    @GetMapping("/user")
+    @GetMapping("/useres")
     public List<User> findAll(){
-        return btservice.findAll();
+        return userService.findAll();
     }
-    @GetMapping("/user/{id}")
+    @GetMapping("/useres/{id}")
     public User findById (@PathVariable int id){
-        User buses=btservice.findById(id);
-        if(buses==null){
-            throw  new RuntimeException("User not Found with id " + id);
+        User agenies=userService.findById(id);
+        if(agenies==null){
+            throw  new RuntimeException("Bus not Found with id " + id);
         }
-        return buses;
+        return agenies;
     }
 
-    @PostMapping("/user")
-    public User updateUser(@RequestBody User bus){
-        btservice.save(bus);
-        return bus;
+    @PostMapping("/useres")
+    public User adduser(@RequestBody User user){
+        userService.save(user);
+        return user;
 
     }
-    @PutMapping("/user")
-    public User updateusers(@RequestBody User Passanger){
-        btservice.save(Passanger);
-        return Passanger;
-    }
 
-    @DeleteMapping("/User/{id}")
-    public String deleteUser(@PathVariable int id){
-        User bus=btservice.findById(id);
-        if(bus==null){
-            throw new RuntimeException("User not Found with id : " +id);
+
+
+
+
+    @DeleteMapping("/user/{id}")
+    public String deleteBus(@PathVariable int id){
+        User user=userService.findById(id);
+        if(user==null){
+            throw new RuntimeException("Usernot Found with id : " +id);
         }
-        btservice.deleteById(id);
-        return "Delete User with id" + id;
+        userService.deleteById(id);
+        return "Delete Bus  with id" + id;
     }
 }

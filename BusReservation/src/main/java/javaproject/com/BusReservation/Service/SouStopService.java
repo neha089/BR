@@ -1,39 +1,44 @@
 package javaproject.com.BusReservation.Service;
 
-import javaproject.com.BusReservation.DAO.BusDao;
+
+import javaproject.com.BusReservation.DAO.SouStopDao;
 import javaproject.com.BusReservation.Entity.Bus;
 import jakarta.transaction.Transactional;
-import javaproject.com.BusReservation.Entity.User;
+import javaproject.com.BusReservation.Entity.SouStop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
-public class BusService {
-    private static BusDao busDao;
+public class SouStopService {
+    private SouStopDao busDao;
     @Autowired
-    public BusService(BusDao thebus){
+    public SouStopService(SouStopDao thebus){
         busDao=thebus;
 
     }
-     @Transactional
-    public List<Bus> findAll(){
+
+
+    @Transactional
+    public List<SouStop> findAll(){
         return busDao.findAll();
     }
 
     @Transactional
-    public Bus findById(int id){
+    public SouStop findById(int id){
         return busDao.findById(id);
     }
-
     @Transactional
-    public void save(Bus useres){
-
-        busDao.save(useres);
+    public void save(SouStop bus){
+        busDao.save(bus);
     }
+
     @Transactional
     public void deleteById(int id){
-         busDao.deleteById(id);
+        busDao.deleteById(id);
     }
 
 }
+
+

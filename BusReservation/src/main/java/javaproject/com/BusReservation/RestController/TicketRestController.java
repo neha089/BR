@@ -1,56 +1,54 @@
 package javaproject.com.BusReservation.RestController;
-
+import javaproject.com.BusReservation.Entity.Agency;
 import javaproject.com.BusReservation.Entity.Ticket;
 import javaproject.com.BusReservation.Service.TicketService;
+import javaproject.com.BusReservation.Service.BusService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Repository
+@RestController
 @RequestMapping("/api")
 public class TicketRestController {
 
-    private TicketService tservice;
+    private TicketService ticketService;
     @Autowired
-    public TicketRestController (TicketService buss){
-        tservice=buss;
+    public TicketRestController(TicketService buss){
+        ticketService=buss;
     }
 
-    @GetMapping("/Ticketes")
+    @GetMapping("/tickets")
     public List<Ticket> findAll(){
-        return tservice.findAll();
+        return ticketService.findAll();
     }
-    @GetMapping("/Ticketes/{id}")
+    @GetMapping("/tickets/{id}")
     public Ticket findById (@PathVariable int id){
-        Ticket Ticketes=tservice.findById(id);
-        if(Ticketes==null){
-            throw  new RuntimeException("Ticket not Found with id " + id);
+        Ticket tickets=ticketService.findById(id);
+        if(tickets==null){
+            throw  new RuntimeException("Bus not Found with id " + id);
         }
-        return Ticketes;
+        return tickets;
     }
 
-    @PostMapping("/Ticket")
-    public Ticket updateTicket(@RequestBody Ticket Ticket){
-        tservice.save(Ticket);
-        return Ticket;
+    @PostMapping("/ticket")
+    public Ticket addticket(@RequestBody Ticket ticket){
+        ticketService.save(ticket);
+        return ticket;
 
     }
 
-    @PutMapping("/Ticket")
-    public Ticket updateTickets(@RequestBody Ticket Ticket){
-        tservice.save(Ticket);
-        return Ticket;
-    }
 
-    @DeleteMapping("/Ticket/{id}")
-    public String deleteTicket(@PathVariable int id){
-        Ticket Ticket=tservice.findById(id);
-        if(Ticket==null){
-            throw new RuntimeException("Ticket not Found with id : " +id);
+
+
+
+    @DeleteMapping("/ticket/{id}")
+    public String deleteBus(@PathVariable int id){
+        Ticket ticket=ticketService.findById(id);
+        if(ticket==null){
+            throw new RuntimeException("Ticketnot Found with id : " +id);
         }
-        tservice.deleteById(id);
-        return "Delete Ticket  with id" + id;
+        ticketService.deleteById(id);
+        return "Delete Bus  with id" + id;
     }
 }

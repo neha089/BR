@@ -1,5 +1,6 @@
 package javaproject.com.BusReservation.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -17,21 +18,38 @@ public class Bus {
     private String type;
     @Column(name = "capacity", nullable = false)
     private int capacity;
-    @OneToMany(mappedBy = "bus")
-    private List<Trip> t;
+    @ManyToMany
+    @JoinTable(
+            name = "bus_stop",
+            joinColumns = @JoinColumn(name = "bus_id"),
+            inverseJoinColumns = @JoinColumn(name = "destiny_id")
+    )
+    @JsonManagedReference
+    private List<DesStop> destiny;
 
-@ManyToOne(fetch=FetchType.LAZY)
-@JoinColumn(name="agency_id")
-private Agency agency;
 
-    public Bus(int B_id, String name, String type, int capacity) {
-        this.b_id = B_id;
+    @ManyToMany
+    @JoinTable(
+            name = "bus_stop",
+            joinColumns = @JoinColumn(name = "bus_id"),
+            inverseJoinColumns = @JoinColumn(name = "source_id")
+    )
+    @JsonManagedReference
+    private List<SouStop> source;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "agency_id", nullable = true)
+    private Agency agency;
+
+
+    public Bus(int b_id, String name, String type, int capacity, List<DesStop> destiny, List<SouStop> source, Agency agency) {
+        this.b_id = b_id;
         this.name = name;
         this.type = type;
         this.capacity = capacity;
+        this.destiny = destiny;
+        this.source = source;
+        this.agency = agency;
     }
-
-
 
 
     public Bus() {
@@ -42,24 +60,16 @@ private Agency agency;
         return b_id;
     }
 
+    public void setB_id(int b_id) {
+        this.b_id = b_id;
+    }
+
     public String getName() {
         return name;
     }
 
-    public int getCapacity() {
-        return capacity;
-    }
-
-    public void setB_id(int B_id) {
-        this.b_id = B_id;
-    }
-
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
     }
 
     public String getType() {
@@ -70,15 +80,48 @@ private Agency agency;
         this.type = type;
     }
 
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public List<DesStop> getDestiny() {
+        return destiny;
+    }
+
+    public void setDestiny(List<DesStop> destiny) {
+        this.destiny = destiny;
+    }
+
+    public List<SouStop> getSource() {
+        return source;
+    }
+
+    public void setSource(List<SouStop> source) {
+        this.source = source;
+    }
+
+    public Agency getAgency() {
+        return agency;
+    }
+
+    public void setAgency(Agency agency) {
+        this.agency = agency;
+    }
+
     @Override
     public String toString() {
         return "Bus{" +
-                "B_id=" + b_id +
+                "b_id=" + b_id +
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", capacity=" + capacity +
+                ", destiny=" + destiny +
+                ", source=" + source +
+                ", agency=" + agency +
                 '}';
     }
 }
-
-

@@ -30,7 +30,7 @@ public class PassangerDao {
             return passangers;
         }
         public void save (Passanger passangers){
-            Object savebus=entityManager.merge(passangers);
+             passangers=entityManager.merge(passangers);
         }
         public void deleteById(int Id){
             Query query=entityManager.createQuery("delete from Passanger where id=: busid");

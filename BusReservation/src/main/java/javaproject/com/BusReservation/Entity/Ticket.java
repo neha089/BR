@@ -18,7 +18,7 @@ public class Ticket {
     @JoinColumn(name="ts_id")
     private TripSchedule ts ;
     @Column(name="j_date" , nullable=false)
-    private Date Booking_date;
+    private Date booking_date;
 
 
     @Column(name="canclellable")
@@ -30,7 +30,7 @@ public class Ticket {
         this.t_id = t_id;
         this.user = user;
         this.ts = ts;
-        Booking_date = booking_date;
+        booking_date = booking_date;
         this.cancallable = cancallable;
         Seat_no = seat_no;
     }
@@ -69,7 +69,7 @@ public class Ticket {
                 "T_id=" + t_id +
                 ", user=" + user +
                 ", ts=" + ts +
-                ", Booking_date=" + Booking_date +
+                ", Booking_date=" + booking_date +
                 ", cancallable=" + cancallable +
                 ", Seat_no=" + Seat_no +
                 '}';
@@ -83,11 +83,11 @@ public class Ticket {
         this.t_id = T_id;
     }
     public Date getBooking_date() {
-        return Booking_date;
+        return booking_date;
     }
 
     public void setBooking_date(Date Booking_date) {
-        this.Booking_date = Booking_date;
+        this.booking_date = Booking_date;
     }
 
     public int getSeat_no() {

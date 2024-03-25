@@ -1,57 +1,54 @@
 package javaproject.com.BusReservation.RestController;
 import javaproject.com.BusReservation.Entity.Passanger;
+import javaproject.com.BusReservation.Entity.Passanger;
+import javaproject.com.BusReservation.Service.PassangerService;
 import javaproject.com.BusReservation.Service.PassangerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Repository
+@RestController
 @RequestMapping("/api")
-
 public class PassangerRestController {
-    private PassangerService pservice;
 
+    private PassangerService passangerService;
     @Autowired
-    public PassangerRestController(PassangerService p) {
-        pservice = p;
+    public PassangerRestController(PassangerService buss){
+        passangerService=buss;
     }
 
-    @GetMapping("/Passangeres")
-    public List<Passanger> findAll() {
-        return pservice.findAll();
+    @GetMapping("/passangers")
+    public List<Passanger> findAll(){
+        return passangerService.findAll();
     }
-
-    @GetMapping("/Passangeres/{id}")
-    public Passanger findById(@PathVariable int id) {
-        Passanger Passangeres = pservice.findById(id);
-        if (Passangeres == null) {
-            throw new RuntimeException("Passanger not Found with id " + id);
+    @GetMapping("/passangers/{id}")
+    public Passanger findById (@PathVariable int id){
+        Passanger agenies=passangerService.findById(id);
+        if(agenies==null){
+            throw  new RuntimeException("Passanger not Found with id " + id);
         }
-        return Passangeres;
+        return agenies;
     }
 
-    @PostMapping("/Passanger")
-    public Passanger updatePassanger(@RequestBody Passanger Passanger) {
-        pservice.save(Passanger);
-        return Passanger;
+    @PostMapping("/passanger")
+    public Passanger addpassanger(@RequestBody Passanger passanger){
+        passangerService.save(passanger);
+        return passanger;
 
     }
 
-    @PutMapping("/Passanger")
-    public Passanger updatePassangers(@RequestBody Passanger Passanger) {
-        pservice.save(Passanger);
-        return Passanger;
-    }
 
-    @DeleteMapping("/Passanger/{id}")
-    public String deletePassanger(@PathVariable int id) {
-        Passanger Passanger = pservice.findById(id);
-        if (Passanger == null) {
-            throw new RuntimeException("Passanger not Found with id : " + id);
+
+
+
+    @DeleteMapping("/passanger/{id}")
+    public String deletePassanger(@PathVariable int id){
+        Passanger passanger=passangerService.findById(id);
+        if(passanger==null){
+            throw new RuntimeException("Passangernot Found with id : " +id);
         }
-        pservice.deleteById(id);
+        passangerService.deleteById(id);
         return "Delete Passanger  with id" + id;
     }
 }

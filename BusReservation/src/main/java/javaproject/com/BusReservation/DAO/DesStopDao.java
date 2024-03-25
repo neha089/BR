@@ -2,39 +2,38 @@ package javaproject.com.BusReservation.DAO;
 
 
 
-import javaproject.com.BusReservation.Entity.Agency;
-import javaproject.com.BusReservation.Entity.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
+import javaproject.com.BusReservation.Entity.DesStop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class UserDao {
+public class DesStopDao {
     private EntityManager entityManager;
     @Autowired
-    public UserDao(EntityManager newentitymanager){
+    public DesStopDao(EntityManager newentitymanager){
         entityManager=newentitymanager;
     }
 
-    public List<User> findAll(){
+    public List<DesStop> findAll(){
 
-        TypedQuery<User> query=entityManager.createQuery("from User",User.class);
-        List<User> agencyes=query.getResultList();
+        TypedQuery<DesStop> query=entityManager.createQuery("from DesStop",DesStop.class);
+        List<DesStop> agencyes=query.getResultList();
         return agencyes;
     }
-    public User findById(int Id){
-        User agencyes=entityManager.find(User.class,Id);
+    public DesStop findById(int Id){
+        DesStop agencyes=entityManager.find(DesStop.class,Id);
         return agencyes;
     }
-    public void save (User agencyes){
+    public void save (DesStop agencyes){
         Object savebus=entityManager.merge(agencyes);
     }
     public void deleteById(int Id){
-        Query query=entityManager.createQuery("delete from User where id=: busid");
+        Query query=entityManager.createQuery("delete from DesStop where id=: busid");
 
         query.setParameter("busid",Id);
         query.executeUpdate();

@@ -17,7 +17,7 @@ public class TripSchedule {
     @JoinColumn(name = "trip_id")
     private Trip tripDetail;
     @Column(name = "j_date", nullable = false)
-    private Date Booking_date;
+    private Date booking_date;
 
     private Boolean cancallable;
     @OneToMany(mappedBy = "ts", cascade = CascadeType.ALL)
@@ -32,7 +32,7 @@ public class TripSchedule {
     public TripSchedule(int ts_id, Trip tripDetail, Date booking_date, Boolean cancallable, Set<Ticket> ticketsSold, int seat_no) {
         this.ts_id = ts_id;
         this.tripDetail = tripDetail;
-        Booking_date = booking_date;
+        booking_date = booking_date;
         this.cancallable = cancallable;
         this.ticketsSold = ticketsSold;
         Seat_no = seat_no;
@@ -45,11 +45,11 @@ public class TripSchedule {
         ts_id = t_id;
     }
     public Date getBooking_date() {
-        return Booking_date;
+        return booking_date;
     }
 
     public void setBooking_date(Date booking_date) {
-        Booking_date = booking_date;
+        booking_date = booking_date;
     }
 
     public Boolean getCancallable() {
@@ -89,7 +89,7 @@ public class TripSchedule {
         return "TripSchedule{" +
                 "ts_id=" + ts_id +
                 ", tripDetail=" + tripDetail +
-                ", Booking_date=" + Booking_date +
+                ", Booking_date=" + booking_date +
                 ", cancallable=" + cancallable +
                 ", ticketsSold=" + ticketsSold +
                 ", Seat_no=" + Seat_no +

@@ -1,6 +1,6 @@
 package javaproject.com.BusReservation.RestController;
-import javaproject.com.BusReservation.Entity.Bus;
 import javaproject.com.BusReservation.Entity.Trip;
+import javaproject.com.BusReservation.Service.DesStopService;
 import javaproject.com.BusReservation.Service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +11,15 @@ import java.util.List;
 @RequestMapping("/api")
 public class TripRestController {
     private TripService tpservice;
+
+    private DesStopService stopService;
     @Autowired
-    public TripRestController(TripService buss){
+    public TripRestController(TripService buss, DesStopService stop){
+
         tpservice=buss;
+        stopService=stop;
+
+
     }
 
     @GetMapping("/trips_track")
@@ -31,7 +37,13 @@ public class TripRestController {
 
     @PostMapping("/trip_track")
     public Trip updateBustrack(@RequestBody Trip trip){
+//        Stop destinationStop = stopService.findById(trip.getDestStop().getS_id());
+//        // Set the fetched destination Stop in the Trip entity
+//        trip.setDestStop(destinationStop);
+
+        // Save the Trip entity
         tpservice.save(trip);
+
         return trip;
 
     }

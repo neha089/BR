@@ -21,12 +21,20 @@ public class Agency {
     private int phone_no;
     @Column(name = "adress", nullable = false, length = 50)
     private String address;
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name="u_id")
     private User agency ;
 
     @OneToMany(mappedBy="agency" )
     private Set<Bus> buses;
+
+    public User getAgency() {
+        return agency;
+    }
+
+    public void setAgency(User agency) {
+        this.agency = agency;
+    }
 
     public Agency(int a_id, String name, String email, int phone_no, String address, User agency, Set<Bus> buses) {
         this.a_id = a_id;

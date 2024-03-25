@@ -28,6 +28,8 @@ public class TripService {
     }
     @Transactional
     public void save(Trip t){
+
+
         tripDao.save(t);
     }
 

@@ -1,7 +1,10 @@
 package javaproject.com.BusReservation.DAO;
 
 
+
+import javaproject.com.BusReservation.Entity.Agency;
 import javaproject.com.BusReservation.Entity.Bus;
+import javaproject.com.BusReservation.Entity.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
@@ -21,15 +24,15 @@ public class BusDao {
     public List<Bus> findAll(){
 
         TypedQuery<Bus> query=entityManager.createQuery("from Bus",Bus.class);
-        List<Bus> buses=query.getResultList();
-        return buses;
+        List<Bus> agencyes=query.getResultList();
+        return agencyes;
     }
     public Bus findById(int Id){
-        Bus buses=entityManager.find(Bus.class,Id);
-        return buses;
+        Bus agencyes=entityManager.find(Bus.class,Id);
+        return agencyes;
     }
-    public void save (Bus buses){
-        Object savebus=entityManager.merge(buses);
+    public void save (Bus agencyes){
+        Object savebus=entityManager.merge(agencyes);
     }
     public void deleteById(int Id){
         Query query=entityManager.createQuery("delete from Bus where id=: busid");

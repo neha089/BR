@@ -13,33 +13,14 @@ public class Role {
     @Column(name = "r_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int r_id;
-@ManyToMany(mappedBy = "role")
-    private Collection<User> users;
+    @ManyToOne
+    @JoinColumn(name="u_id")
+    private User users;
     @Enumerated(EnumType.STRING)
     private UserRoles roles;
 
     public Role() {
 
-    }
-
-    public int getR_id() {
-        return r_id;
-    }
-
-    public void setR_id(int r_id) {
-        this.r_id = r_id;
-    }
-
-    public Collection<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Collection<User> users) {
-        this.users = users;
-    }
-
-    public UserRoles getRoles() {
-        return roles;
     }
 
     @Override
@@ -51,13 +32,35 @@ public class Role {
                 '}';
     }
 
-    public void setRoles(UserRoles roles) {
+    public Role(int r_id, User users, UserRoles roles) {
+        this.r_id = r_id;
+        this.users = users;
         this.roles = roles;
     }
 
-    public Role(int r_id, Collection<User> users, UserRoles roles) {
+    public int getR_id() {
+        return r_id;
+    }
+
+    public void setR_id(int r_id) {
         this.r_id = r_id;
+    }
+
+
+
+    public UserRoles getRoles() {
+        return roles;
+    }
+
+    public User getUsers() {
+        return users;
+    }
+
+    public void setUsers(User users) {
         this.users = users;
+    }
+
+    public void setRoles(UserRoles roles) {
         this.roles = roles;
     }
 }

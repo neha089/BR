@@ -1,20 +1,19 @@
 package javaproject.com.BusReservation.Service;
 
-import jakarta.transaction.Transactional;
 import javaproject.com.BusReservation.DAO.RoleDao;
+import jakarta.transaction.Transactional;
 import javaproject.com.BusReservation.Entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 @Service
 public class RoleService {
     private RoleDao roleDao;
     @Autowired
-    public RoleService(RoleDao therole){
-        roleDao=therole;
+    public RoleService(RoleDao theuser){
+        roleDao=theuser;
 
     }
     @Transactional
@@ -27,8 +26,9 @@ public class RoleService {
         return roleDao.findById(id);
     }
     @Transactional
-    public void save(Role bus){
-        roleDao.save(bus);
+    public void save(Role rolees){
+
+        roleDao.save(rolees);
     }
 
     @Transactional
@@ -37,4 +37,3 @@ public class RoleService {
     }
 
 }
-
